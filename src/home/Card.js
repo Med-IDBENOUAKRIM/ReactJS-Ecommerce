@@ -18,29 +18,30 @@ const Card = ({product, showViewBtn = true}) => {
 
                 </div>
                     <div className="card-body">
-                        <p>{product.description.substring(0, 50)}...</p>
-
-                        <div className='text-center my-3'>
+                        <div className='d-flex justify-content-around align-items-center my-3'>
                             <span style={{fontSize: '25px'}} className='px-4 badge badge-info '>${product.price}</span>
                             <span className='ml-5 badge-pill badge-dark '>{product.category.name}</span>
                         </div>
-
-                        <div className="well">
+                        <div className="container">
+                            <p>{product.description.substring(0, 50)}...</p>
+                        </div>
+                        <div className="d-flex container justify-content-between well">
                             <h5>{product.quantity > 0 ? (
                                 <span className='badge badge-primary'>{product.quantity} in stock</span>) : (<span className='badge badge-danger'> Out of stock</span>)
                              }</h5>
                             <span>Added {moment(product.createdAt).fromNow()}</span>
                         </div>
-
+                        <div className='d-flex justify-content-around align-items-center mt-3'>
                         {showViewBtn && (
                             <Link to={`/product/${product._id}`}>
-                                <button className="btn btn-warning mr-1">View</button>
+                                <button className="btn btn-info mr-1">View</button>
                             </Link>
                         )}
                         {product.quantity > 0 && (
 
                         <button onClick={() => dispatch(addToCart(product))} className="btn btn-success">Add to Cart</button>
                         )}
+                        </div>
                     </div>
             </div>
 

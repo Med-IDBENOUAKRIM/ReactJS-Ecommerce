@@ -27,7 +27,7 @@ const Navbar = ({history}) => {
                 localStorage.removeItem('jwt_info')
                 history.push('/signin')
             })
-            .catch()
+            .catch(err => console.log(err))
     }
 
     
@@ -52,7 +52,7 @@ const Navbar = ({history}) => {
                             <Link style={isActive(history, '/shop')} className="nav-link" to="/shop">Shop 
                             </Link>
                         </li>
-                        {/* { isAuth() && ( */}
+                        { isAuth() && (
                             <li className="nav-item active">
                                 <Link 
                                 style={isActive(history, '/dashboard')} className="nav-link" 
@@ -61,7 +61,7 @@ const Navbar = ({history}) => {
                                     Dashboard
                                 </Link>
                             </li>
-                            {/* )} */}
+                             )}
 
                         <li>
 
@@ -72,13 +72,12 @@ const Navbar = ({history}) => {
                         (
                             <Fragment>
                                 <li className="nav-item">
-                            <Link style={isActive(history, '/signin')} className="nav-link" to="/signin">SignIn</Link>
-                        </li>
-                        
-                        <li className="nav-item">
-                            <Link style={isActive(history, '/signup')}  className="nav-link disabled" to="signup">SignUp
-                            </Link>
-                        </li>
+                                    <Link style={isActive(history, '/signin')} className="nav-link" to="/signin">SignIn</Link>
+                                </li>
+                            
+                                <li className="nav-item">
+                                <Link style={isActive(history, '/signup')} className="nav-link" to="/signup">SignUp</Link>
+                                </li>
                             </Fragment>
                         )
                         }
@@ -91,11 +90,9 @@ const Navbar = ({history}) => {
                         {
 
                             isAuth() && (
-                                        
-                                        <li className="nav-item">
-                                            <span className="nav-link disabled" style={{cursor: 'pointer', color: 'red'}} onClick={signout}>SignOut</span>
-                                        </li>
-                                
+                            <li className="nav-item" onClick={signout} style={{ cursor: "pointer"}} >
+                                <span className="nav-link disabled" style={{color: 'red'}} >SignOut</span>
+                            </li>
                             )
                         }
                     </ul>

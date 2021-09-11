@@ -65,7 +65,7 @@ const AddProduct = () => {
             if(res.error) {
                 toastr.warning(res.error, 'Please check your form!!', { positionClass: "toast-bottom-left", })
             }else{
-                toastr.info(`Category ${product.name} created`, 'New product',{ positionClass: "toast-top-center",})
+                toastr.info(`Product ${product.name} created`, 'New product',{ positionClass: "toast-top-center",})
 
                 setProduct({
                     photo: '',
@@ -134,7 +134,6 @@ const AddProduct = () => {
                                     <option value='true'>Yes</option>
                                 </select>
                             </div>
-                            { JSON.stringify(product) }
                             <button className="my-2 btn btn-block btn-outline-success">New Product</button>
                         </form>
                     </div>
